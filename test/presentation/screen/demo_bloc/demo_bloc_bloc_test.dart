@@ -9,7 +9,7 @@ void main() {
       bloc.add(OpenScreen());
       bloc.add(SearchQueryChanged(keyword: "fake"));
 
-      await emitsExactly(bloc, [
+      expect(bloc, [
         DemoBlocState(
           isLoading: false,
           list: DemoBlocBloc.SAMPLE_DATA,

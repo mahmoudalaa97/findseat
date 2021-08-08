@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class WidgetOffers extends StatelessWidget {
-  Show show;
+  Show? show;
 
   WidgetOffers({this.show});
 
@@ -27,7 +27,7 @@ class WidgetOffers extends StatelessWidget {
             height: 81,
             child: ListView.separated(
               itemBuilder: (context, index) {
-                Offer offer = show.offers[index];
+                Offer offer = show!.offers[index];
 
                 String iconPath = '';
                 Color textColor;
@@ -59,7 +59,7 @@ class WidgetOffers extends StatelessWidget {
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount: show.offers.length,
+              itemCount: show!.offers.length,
             ),
           )
         ],
@@ -69,11 +69,11 @@ class WidgetOffers extends StatelessWidget {
 }
 
 class _WidgetGrabReward extends StatelessWidget {
-  String iconPath;
-  Color iconBgColor;
-  Color textColor;
-  String title;
-  String content;
+  String? iconPath;
+  Color? iconBgColor;
+  Color? textColor;
+  String? title;
+  String? content;
 
   _WidgetGrabReward(
       {this.iconPath,
@@ -105,7 +105,7 @@ class _WidgetGrabReward extends StatelessWidget {
                     color: iconBgColor, borderRadius: BorderRadius.circular(4)),
                 child: Center(
                   child: MySvgImage(
-                    path: iconPath,
+                    path: iconPath!,
                     width: 16,
                     height: 16,
                     applyColorFilter: false,
@@ -119,12 +119,12 @@ class _WidgetGrabReward extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(title,
+                  Text(title!,
                       maxLines: 1,
                       style: FONT_CONST.OSWALD_REGULAR_RED2_12
                           .copyWith(color: textColor)),
                   Text(
-                    content,
+                    content!,
                     style: FONT_CONST.REGULAR_GRAY4_10,
                     maxLines: 2,
                   ),

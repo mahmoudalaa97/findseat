@@ -6,9 +6,9 @@ part 'show_by_category_response.g.dart';
 @JsonSerializable()
 class ShowByCategoryResponse {
   @JsonKey(name: "category_id")
-  int categoryId;
+  int? categoryId;
 
-  List<Show> shows;
+  List<Show>? shows;
 
   ShowByCategoryResponse({this.categoryId, this.shows});
 

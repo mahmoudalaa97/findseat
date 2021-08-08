@@ -15,7 +15,7 @@ class DioProvider {
 
 class HttpLogInterceptor extends InterceptorsWrapper {
   @override
-  Future onRequest(RequestOptions options) async {
+  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     log("onRequest: ${options.uri}\n"
         "data=${options.data}\n"
         "method=${options.method}\n"
@@ -25,15 +25,15 @@ class HttpLogInterceptor extends InterceptorsWrapper {
   }
 
   @override
-  Future onResponse(Response response) {
+  void onResponse(Response response,  ResponseInterceptorHandler handler,) {
     log("onResponse: $response");
-    return super.onResponse(response);
+
   }
 
   @override
-  Future onError(DioError err) {
+  void onError(DioError err, ErrorInterceptorHandler handler,) {
     log("onError: $err\n"
         "Response: ${err.response}");
-    return super.onError(err);
+
   }
 }

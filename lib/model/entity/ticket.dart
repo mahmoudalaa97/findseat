@@ -5,7 +5,7 @@ part 'ticket.g.dart';
 
 @JsonSerializable()
 class Ticket extends Equatable {
-  int id;
+  int? id;
 
   @JsonKey(name: "show_name")
   String showName;
@@ -39,7 +39,7 @@ class Ticket extends Equatable {
   Map<String, dynamic> toJson() => _$TicketToJson(this);
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [id!];
 
   @override
   String toString() {

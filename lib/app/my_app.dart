@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     final config = AppConfig.of(context);
 
     return MaterialApp(
-      debugShowCheckedModeBanner: config.debugTag,
+      debugShowCheckedModeBanner: config!.debugTag,
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: COLOR_CONST.DEFAULT,
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
   static Widget runWidget() {
     WidgetsFlutterBinding.ensureInitialized();
 
-    BlocSupervisor.delegate = SimpleBlocDelegate();
+    Bloc.observer = SimpleBlocDelegate();
 
     final UserRepository userRepository = UserRepository();
     final HomeRepository homeRepository = HomeRepository();

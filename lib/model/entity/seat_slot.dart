@@ -6,5 +6,5 @@ class SeatSlot {
   bool isBooked;
 
   SeatSlot(
-      {@required this.slotId, @required this.rowId, @required this.isBooked});
+      {required this.slotId, required this.rowId, required this.isBooked});
 }

@@ -4,14 +4,14 @@ part 'cine.g.dart';
 
 @JsonSerializable()
 class Cine {
-  String id;
-  String name;
-  String address;
-  int rating;
-  double distance;
-  String photo;
-  double lat;
-  double lng;
+  String? id;
+  String? name;
+  String? address;
+  int? rating;
+  double? distance;
+  String? photo;
+  double? lat;
+  double? lng;
 
   Cine(
       {this.id,

@@ -43,7 +43,7 @@ void main() {
             seatType: SEAT_TYPE.QUEEN),
       ));
 
-      await emitsExactly(
+       expect(
         bloc,
         [
           BookSeatSlotState(
@@ -87,7 +87,7 @@ void main() {
             seatType: SEAT_TYPE.JACK),
       ));
 
-      await emitsExactly(
+      expect(
         bloc,
         [
           BookSeatSlotState(
@@ -145,7 +145,7 @@ void main() {
             seatType: SEAT_TYPE.QUEEN),
       ));
 
-      await emitsExactly(
+      expect(
         bloc,
         [
           BookSeatSlotState(

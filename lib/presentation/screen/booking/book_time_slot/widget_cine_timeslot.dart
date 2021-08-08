@@ -17,10 +17,10 @@ class WidgetCineTimeSlot extends StatelessWidget {
   WidgetCineTimeSlot(this.item);
 
   WidgetCineTimeSlot.selected({
-    @required this.item,
-    @required this.selectedIndex,
-    @required this.showCineName,
-    @required this.showCineDot,
+    required this.item,
+    required this.selectedIndex,
+    required this.showCineName,
+    required this.showCineDot,
   });
 
   BuildContext _context;

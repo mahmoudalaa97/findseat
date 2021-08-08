@@ -15,8 +15,8 @@ class WidgetLoginForm extends StatefulWidget {
 }
 
 class _WidgetLoginFormState extends State<WidgetLoginForm> {
-  AuthenticationBloc _authenticationBloc;
-  LoginBloc _loginBloc;
+  AuthenticationBloc? _authenticationBloc;
+  LoginBloc? _loginBloc;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -37,7 +37,7 @@ class _WidgetLoginFormState extends State<WidgetLoginForm> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.isSuccess) {
-          _authenticationBloc.add(LoggedIn());
+          _authenticationBloc!.add(LoggedIn());
         }
 
         if (state.isFailure) {
@@ -162,7 +162,7 @@ class _WidgetLoginFormState extends State<WidgetLoginForm> {
       child: FlatButton(
         onPressed: () {
           if (isRegisterButtonEnabled()) {
-            _loginBloc.add(LoginSubmitEmailPasswordEvent(
+            _loginBloc!.add(LoginSubmitEmailPasswordEvent(
               email: _emailController.text,
               password: _passwordController.text,
             ));
@@ -183,9 +183,9 @@ class _WidgetLoginFormState extends State<WidgetLoginForm> {
   }
 
   bool isRegisterButtonEnabled() {
-    return _loginBloc.state.isFormValid &&
+    return _loginBloc!.state.isFormValid &&
         isPopulated &&
-        !_loginBloc.state.isSubmitting;
+        !_loginBloc!.state.isSubmitting;
   }
 
   _buildTextFieldPassword() {
@@ -199,13 +199,12 @@ class _WidgetLoginFormState extends State<WidgetLoginForm> {
       ),
       child: Center(
         child: TextFormField(
-          controller: _passwordController,
+          autovalidateMode: AutovalidateMode.always, controller: _passwordController,
           onChanged: (value) {
-            _loginBloc.add(LoginPasswordChanged(password: value));
+            _loginBloc!.add(LoginPasswordChanged(password: value));
           },
-          autovalidate: true,
           validator: (_) {
-            return !_loginBloc.state.isPasswordValid
+            return !_loginBloc!.state.isPasswordValid
                 ? 'Invalid Password'
                 : null;
           },
@@ -233,13 +232,12 @@ class _WidgetLoginFormState extends State<WidgetLoginForm> {
       ),
       child: Center(
         child: TextFormField(
-          controller: _emailController,
+          autovalidateMode: AutovalidateMode.always, controller: _emailController,
           onChanged: (value) {
-            _loginBloc.add(LoginEmailChanged(email: value));
+            _loginBloc!.add(LoginEmailChanged(email: value));
           },
-          autovalidate: true,
           validator: (_) {
-            return !_loginBloc.state.isEmailValid ? 'Invalid Email' : null;
+            return !_loginBloc!.state.isEmailValid ? 'Invalid Email' : null;
           },
           style: FONT_CONST.REGULAR_GRAY1_12,
           maxLines: 1,

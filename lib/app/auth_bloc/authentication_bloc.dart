@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final UserRepository _userRepository;
+  final UserRepository? _userRepository;
 
-  AuthenticationBloc({@required UserRepository userRepository})
+  AuthenticationBloc({required UserRepository? userRepository})
       : assert(userRepository != null),
-        _userRepository = userRepository;
+        _userRepository = userRepository, super(Unauthenticated());
 
   @override
   AuthenticationState get initialState => Uninitialized();
@@ -29,7 +29,7 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapAppStartedToState() async* {
     try {
-      final isSignedIn = await _userRepository.isSignedIn();
+      final isSignedIn = await _userRepository!.isSignedIn();
 
       //db
       await DbHelper.init();
@@ -38,8 +38,8 @@ class AuthenticationBloc
       await Future.delayed(Duration(seconds: 2));
 
       if (isSignedIn) {
-        final name = await _userRepository.getUser();
-        yield Authenticated(name);
+        final name = await _userRepository!.getUser();
+        yield Authenticated(name!);
       } else {
         yield Unauthenticated();
       }
@@ -49,11 +49,11 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> _mapLoggedInToState() async* {
-    yield Authenticated(await _userRepository.getUser());
+    yield Authenticated(await _userRepository!.getUser());
   }
 
   Stream<AuthenticationState> _mapLoggedOutToState() async* {
     yield Unauthenticated();
-    _userRepository.signOut();
+    _userRepository!.signOut();
   }
 }

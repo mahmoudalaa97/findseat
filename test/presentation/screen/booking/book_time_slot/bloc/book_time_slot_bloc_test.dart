@@ -40,7 +40,7 @@ void main() {
       //6. BookSeatType screen is open
       bloc.add(OpenedBookSeatTypeScreen());
 
-      await emitsExactly(
+      expect(
         bloc,
         [
           BookTimeSlotState(isLoading: false, list: mockListBookTimeSlots),

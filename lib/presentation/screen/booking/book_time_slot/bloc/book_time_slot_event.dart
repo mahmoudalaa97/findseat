@@ -62,8 +62,8 @@ class SelectTimeSlot extends BookTimeSlotEvent {
   BookTimeSlot bookTimeSlot;
 
   SelectTimeSlot({
-    @required this.selectedTimeSlot,
-    @required this.bookTimeSlot,
+    required this.selectedTimeSlot,
+    required this.bookTimeSlot,
   });
 
   @override

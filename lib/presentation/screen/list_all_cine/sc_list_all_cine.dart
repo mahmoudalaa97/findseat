@@ -22,8 +22,8 @@ class ListAllCineScreenProvider extends InheritedWidget {
   ValueChanged<DistanceFilter> onFilterChanged;
 
   ListAllCineScreenProvider({
-    @required this.child,
-    @required this.onFilterChanged,
+    required this.child,
+    required this.onFilterChanged,
   });
 
   @override

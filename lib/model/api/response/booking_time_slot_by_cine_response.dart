@@ -5,12 +5,12 @@ part 'booking_time_slot_by_cine_response.g.dart';
 
 @JsonSerializable()
 class BookingTimeSlotByCineResponse {
-  String id;
-  Cine cine;
-  List<String> tami;
+  String? id;
+  Cine? cine;
+  List<String>? tami;
 
   @JsonKey(name: "time_slots")
-  List<TimeSlot> timeSlots;
+  List<TimeSlot>? timeSlots;
 
   BookingTimeSlotByCineResponse(
       {this.id, this.cine, this.tami, this.timeSlots});

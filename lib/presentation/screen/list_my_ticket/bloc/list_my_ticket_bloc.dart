@@ -6,9 +6,9 @@ import 'package:find_seat/model/repo/repo.dart';
 import 'bloc.dart';
 
 class ListMyTicketBloc extends Bloc<ListMyTicketEvent, ListMyTicketState> {
-  TicketRepo ticketRepo;
+ late final TicketRepo ticketRepo;
 
-  ListMyTicketBloc(this.ticketRepo);
+  ListMyTicketBloc(this.ticketRepo) ;
 
   @override
   ListMyTicketState get initialState => ListMyTicketState();

@@ -96,7 +96,7 @@ class CineLocationScreen extends StatelessWidget {
 }
 
 class WidgetItemFacility extends StatelessWidget {
-  String facilityName;
+ late final String facilityName;
 
   WidgetItemFacility(this.facilityName);
 
@@ -114,7 +114,7 @@ class WidgetItemFacility extends StatelessWidget {
           ),
           child: Center(
             child: MySvgImage(
-              path: _fromName(facilityName),
+              path: _fromName(facilityName)!,
               width: 20,
               height: 20,
               applyColorFilter: false,
@@ -127,8 +127,8 @@ class WidgetItemFacility extends StatelessWidget {
     );
   }
 
-  String _fromName(String name) {
-    switch (name.toLowerCase()) {
+  String? _fromName(String? name) {
+    switch (name!.toLowerCase()) {
       case 'cancel':
         return 'assets/ic_cancel.svg';
       case 'parking':
@@ -137,8 +137,6 @@ class WidgetItemFacility extends StatelessWidget {
         return 'assets/ic_hotel.svg';
       case 'park':
         return 'assets/ic_park.svg';
-      default:
-        return null;
     }
   }
 }

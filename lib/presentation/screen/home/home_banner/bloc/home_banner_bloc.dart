@@ -10,7 +10,7 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
   final HomeBloc homeBloc;
   StreamSubscription subscription;
 
-  HomeBannerBloc({@required this.homeBloc}) {
+  HomeBannerBloc({required this.homeBloc}) {
     subscription = homeBloc.listen(
       (state) {
         if (state is HomeLoaded) {

@@ -5,9 +5,9 @@ part 'banner.g.dart';
 
 @JsonSerializable()
 class Banner extends Equatable {
-  int id;
+  int? id;
   @JsonKey(name: 'image')
-  String url;
+  String? url;
 
   Banner({this.id, this.url});
 
@@ -16,7 +16,7 @@ class Banner extends Equatable {
   Map<String, dynamic> toJson() => _$BannerToJson(this);
 
   @override
-  List<Object> get props => [id, url];
+  List<Object> get props => [id!, url!];
 
   @override
   String toString() {

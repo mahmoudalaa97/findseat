@@ -10,7 +10,7 @@ class PaymentMethodPickerBloc
     extends Bloc<PaymentMethodPickerEvent, PaymentMethodPickerState> {
   TicketRepo ticketRepo;
 
-  PaymentMethodPickerBloc(this.ticketRepo) : super();
+  PaymentMethodPickerBloc(this.ticketRepo) : super(PaymentMethodPickerState()) ;
 
   @override
   PaymentMethodPickerState get initialState => PaymentMethodPickerState();

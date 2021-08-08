@@ -10,7 +10,7 @@ class HomeCategoryBloc extends Bloc<HomeCategoriesEvent, HomeCategoriesState> {
   HomeBloc homeBloc;
   StreamSubscription subscription;
 
-  HomeCategoryBloc({@required this.homeBloc}) {
+  HomeCategoryBloc({required this.homeBloc}) {
     subscription = homeBloc.listen(
       (state) {
         if (state is HomeLoaded) {

@@ -4,8 +4,8 @@ class RoundedRectIndicator extends Decoration {
   final BoxPainter _painter;
 
   RoundedRectIndicator({
-    @required Color color,
-    @required double radius,
+    required Color color,
+    required double radius,
     double padding = 0.0,
     double weight = 3.0,
   }) : _painter = _RectPainter(color, radius, padding, weight);

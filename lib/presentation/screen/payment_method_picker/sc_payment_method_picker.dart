@@ -34,7 +34,7 @@ class PaymentMethodPickerScreen extends StatefulWidget {
 }
 
 class _PaymentMethodPickerScreenState extends State<PaymentMethodPickerScreen> {
-  BuildContext blocContext;
+  BuildContext? blocContext;
 
   @override
   void initState() {
@@ -139,7 +139,7 @@ class _PaymentMethodPickerScreenState extends State<PaymentMethodPickerScreen> {
       ),
     ).then((paymentMethod) {
       //for saving ticket to local db
-      blocContext.bloc<PaymentMethodPickerBloc>().add(OnPaymentSuccessEvent(
+      context.read()<PaymentMethodPickerBloc>().add(OnPaymentSuccessEvent(
             widget.show.name,
             widget.show.thumb,
             widget.selectedSeatIds,

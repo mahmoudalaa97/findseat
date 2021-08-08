@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MySvgImage extends StatelessWidget {
-  String path;
-  double width;
-  double height;
-  Color color;
-  bool applyColorFilter;
+ late String path;
+ late double width;
+ late double height;
+  Color? color;
+  bool? applyColorFilter;
 
   MySvgImage(
-      {@required this.path,
-      @required this.width,
-      @required this.height,
+      {required this.path,
+      required this.width,
+      required this.height,
       this.color = Colors.white,
       this.applyColorFilter = true});
 
@@ -23,7 +23,7 @@ class MySvgImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return applyColorFilter
+    return applyColorFilter!
         ? SvgPicture.asset(
             path,
             width: width,

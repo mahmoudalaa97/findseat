@@ -22,7 +22,7 @@ class WidgetHomePosters extends StatelessWidget {
   String iconPath;
 
   WidgetHomePosters(
-      {@required this.items, @required this.label, @required this.iconPath});
+      {required this.items, required this.label, required this.iconPath});
 
   @override
   Widget build(BuildContext context) {
@@ -74,18 +74,18 @@ class WidgetHomePosters extends StatelessWidget {
 }
 
 class _WidgetItemPoster extends StatelessWidget {
-  ItemPosterVM item;
+   ItemPosterVM? item;
 
   _WidgetItemPoster(this.item);
 
-  BuildContext _context;
+ late BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
     _context = context;
     return GestureDetector(
       onTap: () {
-        openShowDetails(show: item.show);
+        openShowDetails(show: item!.show);
       },
       child: Container(
         width: 93,
@@ -96,35 +96,35 @@ class _WidgetItemPoster extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ShimmerImage(
-                item.photo,
+                item!.photo!,
                 width: 93,
                 height: 124,
                 fit: BoxFit.cover,
               ),
             ),
             WidgetSpacer(height: 4),
-            Text(item.title,
+            Text(item!.title!,
                 style: FONT_CONST.REGULAR_BLACK2_12,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis),
             WidgetSpacer(height: 2),
-            Text(item.subTitle, style: FONT_CONST.REGULAR_GRAY6_10),
+            Text(item!.subTitle!, style: FONT_CONST.REGULAR_GRAY6_10),
           ],
         ),
       ),
     );
   }
 
-  void openShowDetails({Show show}) {
+  void openShowDetails({Show? show}) {
     Navigator.pushNamed(_context, AppRouter.SHOW_INFO, arguments: show);
   }
 }
 
 class ItemPosterVM {
-  String title;
-  String subTitle;
-  String photo;
-  Show show;
+  String? title;
+  String? subTitle;
+  String? photo;
+  Show? show;
 
   ItemPosterVM(this.photo, this.title, this.subTitle);
 

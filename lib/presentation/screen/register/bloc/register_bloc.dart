@@ -1,7 +1,6 @@
 import 'package:find_seat/model/repo/user_repository.dart';
 import 'package:find_seat/utils/validators.dart';
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
 
 import 'bloc.dart';
 import 'package:bloc/bloc.dart';
@@ -9,16 +8,15 @@ import 'package:bloc/bloc.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final UserRepository _userRepository;
 
-  RegisterBloc({@required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository;
+  RegisterBloc( this._userRepository) : super(RegisterState.empty());
+
+
 
   @override
   RegisterState get initialState => RegisterState.empty();
 
   @override
-  Stream<RegisterState> transformEvents(Stream<RegisterEvent> events,
-      Stream<RegisterState> Function(RegisterEvent) next) {
+  Stream<Transition<RegisterEvent,RegisterState>> transformEvents(events, Stream<Transition<RegisterEvent,RegisterState>> Function(RegisterEvent) next) {
     final nonDebounceStream = events.where((event) {
       return (event is! EmailChanged &&
           event is! PasswordChanged &&
@@ -31,10 +29,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           event is PasswordChanged ||
           event is ConfirmPasswordChanged ||
           event is NameChanged);
-    }).debounceTime(Duration(milliseconds: 300));
+    });
 
-    return super
-        .transformEvents(nonDebounceStream.mergeWith([debounceStream]), next);
+
+    return super.transformEvents(
+    events.distinct(),
+      next,
+    );
   }
 
   @override

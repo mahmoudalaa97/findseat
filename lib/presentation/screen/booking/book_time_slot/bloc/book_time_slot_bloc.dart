@@ -14,8 +14,8 @@ class BookTimeSlotBloc extends Bloc<BookTimeSlotEvent, BookTimeSlotState> {
   String showId;
 
   BookTimeSlotBloc({
-    @required this.bookTimeSlotRepository,
-    @required this.sessionRepo,
+    required this.bookTimeSlotRepository,
+    required this.sessionRepo,
   });
 
   @override

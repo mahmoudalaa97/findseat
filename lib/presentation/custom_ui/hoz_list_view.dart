@@ -6,8 +6,8 @@ class WrapContentHozListView<T> extends StatefulWidget {
   IndexedWidgetBuilder separatorBuilder;
 
   WrapContentHozListView({
-    @required this.list,
-    @required this.itemBuilder,
+    required this.list,
+    required this.itemBuilder,
     this.separatorBuilder,
   });
 

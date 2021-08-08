@@ -16,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Register')),
       body: Center(
         child: BlocProvider<RegisterBloc>(
-          create: (context) => RegisterBloc(userRepository: userRepository),
+          create: (context) => RegisterBloc( userRepository),
           child: RegisterForm(),
         ),
       ),
@@ -36,7 +36,7 @@ class _RegisterFormState extends State<RegisterForm> {
       TextEditingController();
   final TextEditingController _nameController = TextEditingController();
 
-  RegisterBloc _registerBloc;
+  late RegisterBloc _registerBloc;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty &&
@@ -109,53 +109,49 @@ class _RegisterFormState extends State<RegisterForm> {
               child: ListView(
                 children: <Widget>[
                   TextFormField(
-                    controller: _emailController,
+                    autovalidateMode: AutovalidateMode.always, controller: _emailController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.email),
                       labelText: 'Email',
                     ),
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
-                    autovalidate: true,
                     validator: (_) {
                       return !state.isEmailValid ? 'Invalid Email' : null;
                     },
                   ),
                   TextFormField(
-                    controller: _nameController,
+                    autovalidateMode: AutovalidateMode.always, controller: _nameController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.account_box),
                       labelText: 'Display Name',
                     ),
                     keyboardType: TextInputType.text,
                     autocorrect: false,
-                    autovalidate: true,
                     validator: (_) {
                       return !state.isNameValid ? 'Invalid Name' : null;
                     },
                   ),
                   TextFormField(
-                    controller: _passwordController,
+                    autovalidateMode: AutovalidateMode.always, controller: _passwordController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.lock),
                       labelText: 'Password',
                     ),
                     obscureText: true,
                     autocorrect: false,
-                    autovalidate: true,
                     validator: (_) {
                       return !state.isPasswordValid ? 'Invalid Password' : null;
                     },
                   ),
                   TextFormField(
-                    controller: _confirmPasswordController,
+                    autovalidateMode: AutovalidateMode.always, controller: _confirmPasswordController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.lock_outline),
                       labelText: 'Confirm Password',
                     ),
                     obscureText: true,
                     autocorrect: false,
-                    autovalidate: true,
                     validator: (_) {
                       return !state.isConfirmPasswordValid
                           ? 'Password does not matched'

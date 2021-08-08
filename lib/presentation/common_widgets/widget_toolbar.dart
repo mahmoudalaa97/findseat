@@ -4,8 +4,8 @@ import 'package:find_seat/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 
 class WidgetToolbar extends StatelessWidget {
-  String title;
-  Widget actions;
+  String? title;
+  Widget? actions;
 
   WidgetToolbar({this.title, this.actions});
 
@@ -32,7 +32,7 @@ class WidgetToolbar extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Text(title, style: FONT_CONST.MEDIUM_WHITE_16),
+            child: Text(title!, style: FONT_CONST.MEDIUM_WHITE_16),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),

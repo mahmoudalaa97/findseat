@@ -11,7 +11,7 @@ class NearbyCineBloc extends Bloc<NearbyCineEvent, NearbyCineState> {
   final HomeBloc homeBloc;
   StreamSubscription subscription;
 
-  NearbyCineBloc({@required this.homeBloc}) {
+  NearbyCineBloc({required this.homeBloc}) {
     subscription = homeBloc.listen(
       (state) {
         if (state is HomeLoaded) {

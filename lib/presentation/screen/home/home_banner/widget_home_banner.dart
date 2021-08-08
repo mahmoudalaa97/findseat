@@ -1,9 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:find_seat/presentation/custom_ui/custom_ui.dart';
 import 'package:find_seat/presentation/screen/home/home_banner/bloc/bloc.dart';
 import 'package:find_seat/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class WidgetHomeBanner extends StatefulWidget {
   @override
@@ -33,20 +33,6 @@ class _WidgetHomeBannerState extends State<WidgetHomeBanner> {
     return Stack(
       children: <Widget>[
         CarouselSlider(
-          aspectRatio: aspectRatioBanner,
-          viewportFraction: 1.0,
-          enableInfiniteScroll: true,
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 3),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-          pauseAutoPlayOnTouch: Duration(seconds: 10),
-          scrollDirection: Axis.horizontal,
-          onPageChanged: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
           items: state.banners.map((banner) {
             return ShimmerImage(
               banner.url,
@@ -55,6 +41,21 @@ class _WidgetHomeBannerState extends State<WidgetHomeBanner> {
               iconHolderSize: 56,
             );
           }).toList(),
+          options: CarouselOptions(
+            aspectRatio: aspectRatioBanner,
+            viewportFraction: 1.0,
+            enableInfiniteScroll: true,
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 3),
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+            scrollDirection: Axis.horizontal,
+            onPageChanged: (index, reason) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+          ),
         ),
         _buildIndicators(state),
       ],

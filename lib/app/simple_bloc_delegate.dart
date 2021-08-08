@@ -1,31 +1,28 @@
 import 'package:bloc/bloc.dart';
 import 'package:intl/intl.dart';
 
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onEvent(Bloc bloc, Object event) {
-    super.onEvent(bloc, event);
-    log('onEvent', event);
-  }
+class SimpleBlocDelegate extends BlocObserver {
+@override
+void onCreate(BlocBase bloc) {
+  super.onCreate(bloc);
+  print('onCreate -- ${bloc.runtimeType}');
+}
 
-  @override
-  void onError(Bloc bloc, Object error, StackTrace stacktrace) {
-    super.onError(bloc, error, stacktrace);
-    log('onError', error);
-  }
+@override
+void onChange(BlocBase bloc, Change change) {
+  super.onChange(bloc, change);
+  print('onChange -- ${bloc.runtimeType}, $change');
+}
 
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    log(
-        'onTransition',
-        '\tcurrentState=${transition.currentState}\n'
-            '\tnextState=${transition.nextState}');
-  }
+@override
+void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+  print('onError -- ${bloc.runtimeType}, $error');
+  super.onError(bloc, error, stackTrace);
+}
 
-  void log(String name, Object msg) {
-    print(
-        '===== ${DateFormat("HH:mm:ss-dd MMM, yyyy").format(DateTime.now())}: $name\n'
-        '$msg');
-  }
+@override
+void onClose(BlocBase bloc) {
+  super.onClose(bloc);
+  print('onClose -- ${bloc.runtimeType}');
+}
 }

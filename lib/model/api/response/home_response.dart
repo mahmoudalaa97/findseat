@@ -7,18 +7,18 @@ part 'home_response.g.dart';
 
 @JsonSerializable()
 class HomeResponse {
-  List<Banner> banners;
+  List<Banner>? banners;
 
-  List<Categoryy> categories;
+  List<Categoryy>? categories;
 
   @JsonKey(name: "recommended_seats")
-  List<Show> recommendedSeats;
+  List<Show>? recommendedSeats;
 
   @JsonKey(name: "nearby_theatres")
-  List<Cine> nearbyTheatres;
+  List<Cine>? nearbyTheatres;
 
   @JsonKey(name: "show_by_categories")
-  List<ShowByCategoryResponse> showByCategories;
+  List<ShowByCategoryResponse>? showByCategories;
 
   HomeResponse({this.banners, this.categories});
 

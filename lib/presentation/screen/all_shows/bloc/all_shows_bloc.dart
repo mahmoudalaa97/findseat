@@ -50,7 +50,7 @@ class AllShowsBloc extends Bloc<AllShowsEvent, AllShowsState> {
 
     final debounceStream = events.where((event) {
       return (event is SearchQueryChanged);
-    }).debounceTime(Duration(milliseconds: 400));
+    }).throttleTime(Duration(milliseconds: 400));
 
     return super
         .transformEvents(nonDebounceStream.mergeWith([debounceStream]), next);

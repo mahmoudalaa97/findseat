@@ -11,7 +11,7 @@ class RecommendedSeatsBloc
   final HomeBloc homeBloc;
   StreamSubscription subscription;
 
-  RecommendedSeatsBloc({@required this.homeBloc}) {
+  RecommendedSeatsBloc({required this.homeBloc}) {
     subscription = homeBloc.listen((state) {
       if (state is HomeLoaded) {
         add(DisplayRecommendedSeats(state.response.recommendedSeats));

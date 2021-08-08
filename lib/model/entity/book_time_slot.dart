@@ -7,9 +7,9 @@ part 'book_time_slot.g.dart';
 
 @JsonSerializable()
 class BookTimeSlot extends Equatable {
-  Cine cine;
-  List<TimeSlot> timeSlots;
-  List<String> tami;
+  Cine? cine;
+  List<TimeSlot>? timeSlots;
+  List<String>? tami;
 
   BookTimeSlot({
     this.cine,
@@ -23,7 +23,7 @@ class BookTimeSlot extends Equatable {
   Map<String, dynamic> toJson() => _$BookTimeSlotToJson(this);
 
   @override
-  List<Object> get props => [cine, timeSlots, tami];
+  List<Object> get props => [cine!, timeSlots!, tami!];
 
   @override
   String toString() {
